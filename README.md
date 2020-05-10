@@ -4,7 +4,7 @@ NiFi源码阅读总结与调优经验(2019.12-2020.4)
 
 ## 核心架构
 
-[Flow-Based Programming](./doc/core/Flow-Based Programming.md)
+[Flow-Based Programming]()
 
 [NiFi核心架构](./doc/core/NiFi核心架构.md)
 
@@ -14,7 +14,7 @@ NiFi源码阅读总结与调优经验(2019.12-2020.4)
 
 [磁盘型FlowFileRepository](./doc/sourceCode/repository/FlowFileRepository/WriteAheadLogFlowFileRepository深入解读.md)
 
-[WriteAheadLog](./doc/sourceCode/repository/FlowFileRepository/WriteAheadLogFlowFileRepository深入解读.md)
+[WriteAheadLog解读](./doc/sourceCode/repository/FlowFileRepository/WriteAheadLogFlowFileRepository深入解读.md)
 
 [内存型FlowFileRepository](./doc/sourceCode/repository/FlowFileRepository/VolatileFlowFileRepository解读.md)
 
@@ -22,7 +22,7 @@ NiFi源码阅读总结与调优经验(2019.12-2020.4)
 
 [磁盘型ContentRepository](./doc/sourceCode/repository/ContentRepository/FileSystemRepository深入解读.md)
 
-[内存型ContentR](./doc/sourceCode/repository/ContentRepository/VolatileContentRepository解读.md)
+[内存型ContentRepository](./doc/sourceCode/repository/ContentRepository/VolatileContentRepository解读.md)
 
 - FlowFile
 
