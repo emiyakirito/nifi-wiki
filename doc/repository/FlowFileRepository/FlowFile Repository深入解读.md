@@ -6,21 +6,24 @@
    
    **默认为256个partition**
   
-  （1）SequentialAccessWriteAheadLog：
+  （1）SequentialAccessWriteAheadLog
     > a. 默认实现
-    b. 仅支持配置一个directory，即nifi.properties文件中定义的“nifi.flowfile.repository.directory”
+    
+    > b. 仅支持配置一个directory，即nifi.properties文件中定义的“nifi.flowfile.repository.directory”
 
     ``` Java
     wal = new SequentialAccessWriteAheadLog<>(flowFileRepositoryPaths.get(0), serdeFactory, this);
     ```
   
-  （2）EncryptedSequentialAccessWriteAheadLog:
+  （2）EncryptedSequentialAccessWriteAheadLog
     > a. 加密版本的SequentialAccessWriteAheadLog
-    b. 1.11.0版本（2020.1.22）新发布的特性
+    
+    >b. 1.11.0版本（2020.1.22）新发布的特性
   
-  （3）MinimalLockingWriteAheadLog。
+  （3）MinimalLockingWriteAheadLog
     > a. SequentialAccessWriteAheadLog出现前的默认实现， 出于提高性能的考虑，代码实现为非线程安全，仅支持单线程。**现已废弃。**
-    b. 支持配置多个directory，在nifi.properties中以“nifi.flowfile.repository.directory”前缀出现。
+    
+    >b. 支持配置多个directory，在nifi.properties中以“nifi.flowfile.repository.directory”前缀出现。
 
 
 ## FlowFile Repository领域类图
@@ -32,6 +35,7 @@
 - 初始化如下类成员变量
 
 > 1.ResourceClaimsManager：用于管理ResourceClaim，ResourceClaim中包含了content集合所在的目录信息（id、container以及section）。下面会有专门部分分析ResourceClaim。
+
 > 2.RepositoryRecordSerdeFactory：用于生成WAL中专门用于记录变更的日志接口WriteAheadJournal，WAL的实现机制会有专门的解读。
 
 ``` Java
@@ -253,11 +257,13 @@
 1. 首先说明下ResourceClaim与ContentClaim的关系
 
 > ResourceClaim是NiFi对于Repository中资源的一种抽象，主要包含id、container和section这几个属性，container是定义在nifi.properties中以"nifi.content.repository.directory."为前缀的配置项，可以配置多个，即Content Repository中的一级目录；section可以看作是container的二级子目录，默认每个container中有1024个section。
+
 > ResourceClaim是ContentClaim的超集，ContentClaim包含offset和length两个重要属性，ContentClaim对象为所在的ResourceClaim对象中offset起始位，偏移length长度的二进制字节对象。
 
 2. 更新ContentClaim的引用计数。RepositoryRecord对象里持有当前引用的ContentClaim对象currentClaim和原始ContentClaim对象originalClaim。
 
 > （1）如果FlowFile为DELETE/CONTENTMISSING，则减少currentClaim对象的引用计数；
+
 > （2）如果currentClaim对象与originalClaim对象两者不相等，则认为FlowFile的content已被更新，减少originalClaim的引用计数。
 
 ``` Java
@@ -280,6 +286,7 @@
 3. 收集以下几种待destruction的ResourceClaim对象，并收集待SwapIn和SwapOut的swap文件名。
 
 > （1）DELETE状态的RepositoryRecord的currentClaim，以及和currentClaim对象不同的originalClaim
+
 > （2）UPDATE状态的RepositoryRecord的originalClaim
 
 ``` Java
