@@ -22,7 +22,7 @@
 
 
 ## FlowFile Repository领域类图
-![FlowFile Repository](WriteAheadFlowFileRepository.png)
+![FlowFile Repository](https://gitee.com/emiyakirito_zxc/resources/blob/master/pic/WriteAheadLogFlowFileRepository.jpg)
 
 
 ## 初始化过程
