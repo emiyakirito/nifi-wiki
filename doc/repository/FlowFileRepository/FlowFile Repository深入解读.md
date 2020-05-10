@@ -3,7 +3,9 @@
 - FlowFile Repository的默认实现为WriteAheadFlowFileRepository，使用WAL(Write-Ahead-Log)记录所有FlowFile对象上的操作。
 
 - WAL支持三种实现形式：
-    **默认为256个partition**
+   
+   **默认为256个partition**
+  
   （1）SequentialAccessWriteAheadLog：
     > a. 默认实现
     b. 仅支持配置一个directory，即nifi.properties文件中定义的“nifi.flowfile.repository.directory”
