@@ -18,12 +18,14 @@
   （2）EncryptedSequentialAccessWriteAheadLog
     > a. 加密版本的SequentialAccessWriteAheadLog
     
-    >b. 1.11.0版本（2020.1.22）新发布的特性
+    > b. 1.11.0版本（2020.1.22）新发布的特性
   
   （3）MinimalLockingWriteAheadLog
-    > a. SequentialAccessWriteAheadLog出现前的默认实现， 出于提高性能的考虑，代码实现为非线程安全，仅支持单线程。**现已废弃。**
+    > a. SequentialAccessWriteAheadLog出现前的默认实现， 出于提高性能的考虑，代码实现为非线程安全，仅支持单线程。
     
-    >b. 支持配置多个directory，在nifi.properties中以“nifi.flowfile.repository.directory”前缀出现。
+    > b. **现已废弃，目前仅用于StateProvider接口实现中。**
+    
+    > c. 支持配置多个directory，在nifi.properties中以“nifi.flowfile.repository.directory”前缀出现。
 
 
 ## FlowFile Repository领域类图
