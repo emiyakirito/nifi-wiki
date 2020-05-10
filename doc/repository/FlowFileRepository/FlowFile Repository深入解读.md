@@ -27,7 +27,7 @@
 
 
 ## FlowFile Repository领域类图
-![FlowFile Repository](./WriteAheadLogFlowFileRepository.jpg)
+![FlowFile Repository](./resources/WriteAheadLogFlowFileRepository.jpg)
 
 
 ## 初始化过程
