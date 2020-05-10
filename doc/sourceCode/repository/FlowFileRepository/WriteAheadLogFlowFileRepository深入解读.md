@@ -1,4 +1,4 @@
-# FlowFile Repository 深入解读
+# WriteAheadLogFlowFileRepository 深入解读
 
 - FlowFile Repository的默认实现为WriteAheadFlowFileRepository，使用WAL(Write-Ahead-Log)记录所有FlowFile对象上的操作。
 
@@ -29,7 +29,7 @@
 
 
 ## FlowFile Repository领域类图
-![FlowFile Repository](./resources/WriteAheadLogFlowFileRepository.jpg)
+![](./resources/WriteAheadLogFlowFileRepository.jpg)
 
 
 ## 初始化过程
